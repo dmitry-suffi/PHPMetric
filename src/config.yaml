@@ -1,0 +1,9 @@
+parser:
+  path:
+  exclude:
+
+output:
+  type: html
+
+metrics:
+  all: true

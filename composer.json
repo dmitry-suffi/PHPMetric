@@ -1,0 +1,23 @@
+{
+    "require": {
+        "nikic/php-parser": "^4.4",
+        "symfony/console": "^5.0",
+        "symfony/finder": "^5.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "symfony/config": "^5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.1.*",
+        "phpstan/phpstan": "^0.12.29"
+    },
+    "autoload": {
+        "psr-4": {
+            "Suffi\\PHPMetric\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}

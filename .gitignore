@@ -1,0 +1,16 @@
+.idea
+
+vendor
+
+# report results
+MetricReport
+report
+
+#docs
+docs
+
+#temp
+assets
+arh.md
+data.json
+g.php
