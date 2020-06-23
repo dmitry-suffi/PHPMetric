@@ -1,13 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Model\Classes\External;
+
 /**
  * For HavingUseCasesInterface
  * Trait ExternalTrait
  */
 trait ExternalTrait
 {
-    /** @var UseCaseInterface[] */
+    /**
+     * @var UseCaseInterface[]
+     */
     protected array $useCased = [];
 
     public function addUseCase(UseCaseInterface $useCase)

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Model\Classes;
 
@@ -21,7 +23,11 @@ class PropertyTest extends TestCase
 
     public function testProtected(): void
     {
-        $property = new Property('name', $this->createMock(ClassInterface::class), AccessibleInterface::ACCESS_PROTECTED);
+        $property = new Property(
+            'name',
+            $this->createMock(ClassInterface::class),
+            AccessibleInterface::ACCESS_PROTECTED
+        );
 
         $this->assertTrue($property->isProtected());
         $this->assertFalse($property->isPublic());
@@ -38,7 +44,12 @@ class PropertyTest extends TestCase
     {
         $property = new Property('name', $this->createMock(ClassInterface::class));
         $this->assertFalse($property->isStatic());
-        $property = new Property('name', $this->createMock(ClassInterface::class), AccessibleInterface::ACCESS_PROTECTED, true);
+        $property = new Property(
+            'name',
+            $this->createMock(ClassInterface::class),
+            AccessibleInterface::ACCESS_PROTECTED,
+            true
+        );
         $this->assertTrue($property->isStatic());
     }
 }

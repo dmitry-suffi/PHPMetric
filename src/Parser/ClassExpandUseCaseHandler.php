@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Parser;
 
 use Suffi\PHPMetric\Model\Classes\External\ExternalInterfaceType;
@@ -21,7 +23,7 @@ class ClassExpandUseCaseHandler implements UseCaseHandlerInterface
     }
 
     /**
-     * @param ClassInterface $currentType
+     * @param ClassInterface     $currentType
      * @param InterfaceInterface $object
      */
     public function add(TypeInterface $currentType, TypeInterface $object): void
@@ -35,7 +37,7 @@ class ClassExpandUseCaseHandler implements UseCaseHandlerInterface
     }
 
     /**
-     * @param ClassInterface $currentType
+     * @param ClassInterface     $currentType
      * @param InterfaceInterface $object
      */
     public function createUseCase(TypeInterface $currentType, TypeInterface $object): UseCaseInterface

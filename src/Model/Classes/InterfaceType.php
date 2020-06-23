@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes;
 
@@ -26,6 +28,7 @@ class InterfaceType implements InterfaceInterface
 
     /**
      * InterfaceType constructor.
+     *
      * @param string $name
      * @param string $fullName
      */

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\View;
 
@@ -12,6 +14,7 @@ class ConsolePrinter
 
     /**
      * ConsolePrinter constructor.
+     *
      * @param OutputInterface $output
      */
     public function __construct(OutputInterface $output)
@@ -30,7 +33,9 @@ class ConsolePrinter
         foreach ($types as $fileName => $types) {
             $this->output->writeln('');
             $this->output->writeln("Файл " . $fileName . ':');
-            /** @var TypeInterface $type */
+            /**
+ * @var TypeInterface $type
+*/
             foreach ($types as $type) {
                 $this->output->writeln("  Класс " . $type->getName() . ':');
             }

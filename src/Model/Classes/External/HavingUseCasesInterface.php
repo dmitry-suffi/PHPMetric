@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Model\Classes\External;
 
 /**
@@ -10,6 +12,7 @@ interface HavingUseCasesInterface
 {
     /**
      * UseCases
+     *
      * @return array
      */
     public function getUseCases(): array;
@@ -17,12 +20,13 @@ interface HavingUseCasesInterface
     /**
      * Флаг, что использование задано
      * Должен быть истиным только, если все UseCases заданы
+     *
      * @return bool
      */
     public function isDefined(): bool;
 
     /**
-     * @param UseCaseInterface $useCase
+     * @param  UseCaseInterface $useCase
      * @return mixed
      */
     public function addUseCase(UseCaseInterface $useCase);

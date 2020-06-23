@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes\Interfaces;
 
@@ -24,25 +26,38 @@ interface AccessibleInterface
     public const ACCESS_PRIVATE = 2;
 
     /**
+     * Список возможных типов доступа
+     */
+    public const ACCESS_LIST = [
+        self::ACCESS_PUBLIC,
+        self::ACCESS_PROTECTED,
+        self::ACCESS_PRIVATE
+    ];
+
+    /**
      * Возвращает уровень доступа в виде числа self::ACCESS_PUBLIC | self::ACCESS_PROTECTED | self::ACCESS_PRIVATE
+     *
      * @return int
      */
     public function getAccessType(): int;
 
     /**
      * Уровень доступа - публичный
+     *
      * @return bool
      */
     public function isPublic(): bool;
 
     /**
      * Уровень доступа - защищенный
+     *
      * @return bool
      */
     public function isProtected(): bool;
 
     /**
      * Уровень доступа закрытый
+     *
      * @return bool
      */
     public function isPrivate(): bool;

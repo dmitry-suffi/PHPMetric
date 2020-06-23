@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Command;
 
@@ -45,9 +47,9 @@ class ParserCommand extends Command
     }
 
     /**
-     * @param OutputInterface $output
-     * @param string $path
-     * @param $exclude
+     * @param  OutputInterface $output
+     * @param  string          $path
+     * @param  mixed $exclude
      * @return array|bool
      */
     private function load(OutputInterface $output, string $path, $exclude)
@@ -91,7 +93,7 @@ class ParserCommand extends Command
 
                 $ast = $traverser->traverse($ast);
             } catch (\Error $error) {
-                $output->writeln("Parse error: {$error->getMessage()}",);
+                $output->writeln("Parse error: {$error->getMessage()}");
                 return false;
             }
         }

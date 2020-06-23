@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\View\Html;
 
@@ -12,6 +14,7 @@ class Printer
 
     /**
      * ConsolePrinter constructor.
+     *
      * @param OutputInterface $output
      */
     public function __construct(OutputInterface $output)
@@ -20,9 +23,9 @@ class Printer
     }
 
     /**
-     * @param MeasuredCollection $measuredCollection
-     * @param string $filename
-     * @param mixed[] $tree
+     * @param  MeasuredCollection $measuredCollection
+     * @param  string             $filename
+     * @param  mixed[]            $tree
      * @throws \Throwable
      */
     public function print(MeasuredCollection $measuredCollection, string $filename, array $tree = []): void
@@ -42,7 +45,7 @@ class Printer
         ob_implicit_flush(0);
         extract($data, EXTR_OVERWRITE);
         try {
-            require 'Template/list.dist.php';
+            include 'Template/list.dist.php';
             $content = ob_get_clean();
         } catch (\Exception $e) {
             ob_clean();

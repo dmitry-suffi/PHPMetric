@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes\Traits;
 
@@ -12,12 +14,15 @@ trait AccessibleTrait
 {
     /**
      * Уровень доступа
+     *
      * @var int
      */
     protected int $accessType = AccessibleInterface::ACCESS_PUBLIC;
 
     /**
-     * Возвращает уровень доступа в виде числа AccessibleInterface::ACCESS_PUBLIC | AccessibleInterface::ACCESS_PROTECTED | AccessibleInterface::ACCESS_PRIVATE
+     * Возвращает уровень доступа в виде числа
+     * AccessibleInterface::ACCESS_PUBLIC | AccessibleInterface::ACCESS_PROTECTED | AccessibleInterface::ACCESS_PRIVATE
+     *
      * @return int
      */
     public function getAccessType(): int
@@ -27,6 +32,7 @@ trait AccessibleTrait
 
     /**
      * Уровень доступа - публичный
+     *
      * @return bool
      */
     public function isPublic(): bool
@@ -36,6 +42,7 @@ trait AccessibleTrait
 
     /**
      * Уровень доступа - защищенный
+     *
      * @return bool
      */
     public function isProtected(): bool
@@ -45,6 +52,7 @@ trait AccessibleTrait
 
     /**
      * Уровень доступа закрытый
+     *
      * @return bool
      */
     public function isPrivate(): bool

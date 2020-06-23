@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Metric;
 
 use Suffi\PHPMetric\Model\Classes\Interfaces\TypeInterface;
@@ -11,7 +13,7 @@ use Suffi\PHPMetric\Model\Classes\Interfaces\TypeInterface;
 interface MetricInterface
 {
     /**
-     * @param TypeInterface $type
+     * @param  TypeInterface $type
      * @return int|float|bool
      */
     public function measure(TypeInterface $type);

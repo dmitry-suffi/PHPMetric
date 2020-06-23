@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes\Interfaces;
 
@@ -12,24 +14,35 @@ interface TypeInterface
 {
     /**
      * Имя файла
+     *
      * @return string
      */
     public function getFileName(): string;
 
     /**
+     * Имя файла
+     *
+     * @param string $fileName
+     */
+    public function setFileName(string $fileName): void;
+
+    /**
      * Название типа
+     *
      * @return string
      */
     public function getName(): string;
 
     /**
      * Полное название с namespace
+     *
      * @return string
      */
     public function getFullName(): string;
 
     /**
      * Коллекция методов
+     *
      * @return MethodCollection
      */
     public function getMethods(): MethodCollection;

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes\Interfaces;
 
@@ -10,12 +12,14 @@ interface InterfaceInterface extends TypeInterface
 {
     /**
      * Коллекция констант
+     *
      * @return ConstantCollectionInterface
      */
     public function getConstants(): ConstantCollectionInterface;
 
     /**
      * Коллекция родительских интерфейсов
+     *
      * @return InterfaceCollectionInterface
      */
     public function getExpands(): InterfaceCollectionInterface;

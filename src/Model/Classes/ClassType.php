@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes;
 
@@ -37,10 +39,11 @@ class ClassType implements ClassInterface
 
     /**
      * ClassType constructor.
+     *
      * @param string $name
      * @param string $fullName
-     * @param bool $final
-     * @param bool $abstract
+     * @param bool   $final
+     * @param bool   $abstract
      */
     public function __construct(string $name, string $fullName, bool $final = false, bool $abstract = false)
     {

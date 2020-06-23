@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Metric;
 
 use PHPUnit\Framework\TestCase;
@@ -17,7 +19,7 @@ class MeasuredTypeTest extends TestCase
 
         $measuredType->addValue(new MetricValue('metricA', 4));
 
-        /** @var MetricValue $metricValue */
+        /**  @var MetricValue $metricValue */
         $metricValue = $measuredType->getValue('metricA');
         $this->assertInstanceOf(MetricValue::class, $metricValue);
         $this->assertEquals(4, $metricValue->getValue());

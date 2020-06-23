@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Metric\Extend;
 
 use Suffi\PHPMetric\Metric\MeasuredCollection;
@@ -30,7 +32,8 @@ class Measurer extends \Suffi\PHPMetric\Metric\Measurer
 
             if ($type instanceof ClassInterface) {
                 if ($type->getParent()) {
-                    $classesNOC[$type->getParent()->getFullName()] = ($classesNOC[$type->getParent()->getFullName()] ?? 0) + 1;
+                    $parentFullName = $type->getParent()->getFullName();
+                    $classesNOC[$parentFullName] = ($classesNOC[$parentFullName] ?? 0) + 1;
                     $classesWithParent[$type->getFullName()] = $type->getFullName();
                 }
 
@@ -47,6 +50,7 @@ class Measurer extends \Suffi\PHPMetric\Metric\Measurer
 
         while (count($classesWithParent) > 0) {
             foreach ($classesWithParent as $k => $name) {
+                /** @var ClassInterface $type */
                 $type = $measuredCollection->get($name)->getType();
                 if (!isset($classesWithParent[$type->getParent()->getFullName()])) {
                     //@todo $classesDIT не содержит родителя, если он внешний

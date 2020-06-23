@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\View;
 
@@ -10,6 +12,7 @@ class TypeContainer
 
     /**
      * TypeContainer constructor.
+     *
      * @param TypeInterface $type
      */
     public function __construct(TypeInterface $type)

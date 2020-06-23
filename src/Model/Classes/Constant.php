@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes;
 
@@ -26,9 +28,10 @@ class Constant implements ConstantInterface, AccessibleInterface
 
     /**
      * Constant constructor.
-     * @param string $name
-     * @param TypeInterface $type
-     * @param int $accessType
+     *
+     * @param  string        $name
+     * @param  TypeInterface $type
+     * @param  int           $accessType
      * @throws Exception
      */
     public function __construct(string $name, TypeInterface $type, int $accessType = AccessibleInterface::ACCESS_PUBLIC)
@@ -51,6 +54,7 @@ class Constant implements ConstantInterface, AccessibleInterface
 
     /**
      * {@inheritDoc}
+     *
      * @return ClassInterface|InterfaceInterface
      */
     public function getType(): TypeInterface

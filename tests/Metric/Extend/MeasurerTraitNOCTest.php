@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Metric\Extend;
 
 use PHPUnit\Framework\TestCase;
@@ -24,6 +26,7 @@ class MeasurerTraitNOCTest extends TestCase
         $measuredTypes = $measurer->measureTypes($types);
         $this->assertTrue($measuredTypes->has('TA'));
         $measuredTypeTA = $measuredTypes->get('TA');
+
         /** @var MetricValue $metricValue */
         $metricValue = $measuredTypeTA->getValue(Measurer::TRAIT_NOC);
         $this->assertEquals(0, $metricValue->getValue());
@@ -45,6 +48,7 @@ class MeasurerTraitNOCTest extends TestCase
         $measuredTypes = $measurer->measureTypes($types);
         $this->assertTrue($measuredTypes->has('TA'));
         $measuredTypeTA = $measuredTypes->get('TA');
+
         /** @var MetricValue $metricValue */
         $metricValue = $measuredTypeTA->getValue(Measurer::TRAIT_NOC);
         $this->assertEquals(1, $metricValue->getValue());
@@ -70,6 +74,7 @@ class MeasurerTraitNOCTest extends TestCase
         $measuredTypes = $measurer->measureTypes($types);
         $this->assertTrue($measuredTypes->has('TA'));
         $measuredTypeTA = $measuredTypes->get('TA');
+
         /** @var MetricValue $metricValue */
         $metricValue = $measuredTypeTA->getValue(Measurer::TRAIT_NOC);
         $this->assertEquals(2, $metricValue->getValue());
@@ -99,6 +104,7 @@ class MeasurerTraitNOCTest extends TestCase
         $measuredTypes = $measurer->measureTypes($types);
         $this->assertTrue($measuredTypes->has('TA'));
         $measuredTypeTA = $measuredTypes->get('TA');
+
         /** @var MetricValue $metricValue */
         $metricValue = $measuredTypeTA->getValue(Measurer::TRAIT_NOC);
         $this->assertEquals(2, $metricValue->getValue());

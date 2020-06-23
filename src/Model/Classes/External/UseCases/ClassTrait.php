@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Model\Classes\External\UseCases;
 
 use Suffi\PHPMetric\Model\Classes\ClassType;
@@ -9,6 +11,7 @@ use Suffi\PHPMetric\Model\Classes\Interfaces\TypeInterface;
 
 /**
  * Class ClassTrait
+ *
  * @property TraitInterface $type
  */
 class ClassTrait extends UseCase

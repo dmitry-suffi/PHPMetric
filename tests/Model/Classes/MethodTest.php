@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace Tests\Model\Classes;
-
 
 use PHPUnit\Framework\TestCase;
 use Suffi\PHPMetric\Model\Classes\Exception;
@@ -35,15 +35,32 @@ class MethodTest extends TestCase
     {
         $method = new Method('name', $this->createMock(ClassInterface::class));
         $this->assertFalse($method->isStatic());
-        $method = new Method('name', $this->createMock(ClassInterface::class), AccessibleInterface::ACCESS_PROTECTED, true);
+        $method = new Method(
+            'name',
+            $this->createMock(ClassInterface::class),
+            AccessibleInterface::ACCESS_PROTECTED,
+            true
+        );
         $this->assertTrue($method->isStatic());
     }
 
     public function testFinal(): void
     {
-        $method = new Method('name', $this->createMock(ClassInterface::class), AccessibleInterface::ACCESS_PROTECTED, false, false);
+        $method = new Method(
+            'name',
+            $this->createMock(ClassInterface::class),
+            AccessibleInterface::ACCESS_PROTECTED,
+            false,
+            false
+        );
         $this->assertFalse($method->isFinal());
-        $method = new Method('name', $this->createMock(ClassInterface::class), AccessibleInterface::ACCESS_PROTECTED, false, true);
+        $method = new Method(
+            'name',
+            $this->createMock(ClassInterface::class),
+            AccessibleInterface::ACCESS_PROTECTED,
+            false,
+            true
+        );
         $this->assertTrue($method->isFinal());
     }
 }

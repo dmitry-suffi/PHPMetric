@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Metric;
 
@@ -6,7 +8,9 @@ use Suffi\PHPMetric\Model\Classes\Exception;
 
 class MeasuredCollection
 {
-    /** @var MeasuredType[] */
+    /**
+     * @var MeasuredType[]
+     */
     private array $types = [];
 
     public function addMeasuredType(MeasuredType $measuredType)

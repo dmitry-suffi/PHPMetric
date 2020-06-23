@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Model\Classes\External\UseCases;
 
 use Suffi\PHPMetric\Model\Classes\External\UseCaseInterface;
@@ -13,6 +15,7 @@ abstract class UseCase implements UseCaseInterface
 
     /**
      * UseCase constructor.
+     *
      * @param TypeInterface $type
      */
     public function __construct(TypeInterface $type)

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Parser;
 
 use Suffi\PHPMetric\Model\Classes\External\ExternalClassType;

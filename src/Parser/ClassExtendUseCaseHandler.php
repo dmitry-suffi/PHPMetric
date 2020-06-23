@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Parser;
 
 use Suffi\PHPMetric\Model\Classes\ClassType;
@@ -24,7 +26,7 @@ class ClassExtendUseCaseHandler implements UseCaseHandlerInterface
     }
 
     /**
-     * @param ClassType $currentType
+     * @param ClassType      $currentType
      * @param ClassInterface $object
      */
     public function add(TypeInterface $currentType, TypeInterface $object): void

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Metric\Extend;
 
 use PHPUnit\Framework\TestCase;
@@ -40,7 +42,8 @@ class MeasurerInterfaceNOCTest extends TestCase
 
         $measuredTypes = $measurer->measureTypes($types);
         $this->assertTrue($measuredTypes->has('IA'));
-        $measuredTypeIA = $measuredTypes->get('IA');$this->assertEquals(1, $measuredTypeIA->getValue(Measurer::INTERFACE_NOC)->getValue());
+        $measuredTypeIA = $measuredTypes->get('IA');
+        $this->assertEquals(1, $measuredTypeIA->getValue(Measurer::INTERFACE_NOC)->getValue());
         $this->assertEquals(1, $measuredTypeIA->getValue(Measurer::INTERFACE_NOC)->getValue());
     }
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes\Interfaces;
 
@@ -10,12 +12,14 @@ interface ConstantInterface
 {
     /**
      * Имя константы
+     *
      * @return string
      */
     public function getName(): string;
 
     /**
      * Тип, к которому принадлежит константа
+     *
      * @return TypeInterface
      */
     public function getType(): TypeInterface;

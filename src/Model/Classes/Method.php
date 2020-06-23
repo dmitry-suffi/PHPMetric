@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes;
 
@@ -20,9 +22,9 @@ class Method implements MethodInterface, AccessibleInterface
     private string $name;
 
     /**
-     * @var ClassInterface|TraitInterface
+     * @var TypeInterface
      */
-    private  $type;
+    private $type;
 
     private bool $static = false;
 
@@ -32,16 +34,23 @@ class Method implements MethodInterface, AccessibleInterface
 
     /**
      * Method constructor.
-     * @param string $name
+     *
+     * @param string        $name
      * @param TypeInterface $type
-     * @param int $accessType
-     * @param bool $static
-     * @param bool $final
+     * @param int           $accessType
+     * @param bool          $static
+     * @param bool          $final
      */
-    public function __construct(string $name, TypeInterface $type, int $accessType = AccessibleInterface::ACCESS_PUBLIC, bool $static = false, bool $final = false, bool $abstract = false)
-    {
+    public function __construct(
+        string $name,
+        TypeInterface $type,
+        int $accessType = AccessibleInterface::ACCESS_PUBLIC,
+        bool $static = false,
+        bool $final = false,
+        bool $abstract = false
+    ) {
         $this->name = $name;
-        if (!in_array($accessType, [AccessibleInterface::ACCESS_PUBLIC, AccessibleInterface::ACCESS_PROTECTED, AccessibleInterface::ACCESS_PRIVATE])) {
+        if (!in_array($accessType, AccessibleInterface::ACCESS_LIST)) {
             $accessType = AccessibleInterface::ACCESS_PUBLIC;
         }
 

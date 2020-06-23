@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Parser;
 
@@ -60,7 +62,7 @@ class NodeVisitorTest extends TestCase
         /** @var InterfaceType $interfaceType */
         $interfaceType = $types[array_key_first($types)];
 
-        /** Consts */
+        // Consts
         $this->assertInstanceOf(InterfaceType::class, $interfaceType);
         $this->assertEquals('FooInterface', $interfaceType->getName());
         $this->assertEquals('Tests\Fixtures\Foo\FooInterface', $interfaceType->getFullName());
@@ -75,7 +77,7 @@ class NodeVisitorTest extends TestCase
         $this->assertEquals($interfaceType, $constant->getType());
         $this->assertTrue($constant->isPublic());
 
-        /** Methods */
+        //Methods
         $this->assertCount(1, $interfaceType->getMethods());
         $this->assertTrue($interfaceType->getMethods()->has('foo'));
 
@@ -103,24 +105,24 @@ class NodeVisitorTest extends TestCase
         $this->assertEquals('Tests\Fixtures\Foo\FooTrait', $traitType->getFullName());
         $this->assertEquals('FooTrait.php', $traitType->getFileName());
 
-        /** Properties */
+        //Properties
         $this->assertCount(1, $traitType->getProperties());
-        $this->assertTrue($traitType->getProperties()->has('t_foo'));
+        $this->assertTrue($traitType->getProperties()->has('tFoo'));
 
         /** @var Property $property */
-        $property = $traitType->getProperties()->get('t_foo');
-        $this->assertEquals('t_foo', $property->getName());
+        $property = $traitType->getProperties()->get('tFoo');
+        $this->assertEquals('tFoo', $property->getName());
         $this->assertEquals($traitType, $property->getType());
         $this->assertTrue($property->isProtected());
         $this->assertFalse($property->isStatic());
 
-        /** Methods */
+        //Methods
         $this->assertCount(1, $traitType->getMethods());
-        $this->assertTrue($traitType->getMethods()->has('t_foo'));
+        $this->assertTrue($traitType->getMethods()->has('tFoo'));
 
         /** @var Method $method */
-        $method = $traitType->getMethods()->get('t_foo');
-        $this->assertEquals('t_foo', $method->getName());
+        $method = $traitType->getMethods()->get('tFoo');
+        $this->assertEquals('tFoo', $method->getName());
         $this->assertEquals($traitType, $method->getType());
         $this->assertTrue($method->isPublic());
         $this->assertFalse($method->isFinal());
@@ -137,7 +139,7 @@ class NodeVisitorTest extends TestCase
         /** @var ClassType $classType */
         $classType = $types[array_key_first($types)];
 
-        /** Consts */
+        //Consts
         $this->assertCount(1, $classType->getConstants());
         $this->assertTrue($classType->getConstants()->has('C_FOO'));
 
@@ -147,7 +149,7 @@ class NodeVisitorTest extends TestCase
         $this->assertEquals($classType, $constant->getType());
         $this->assertTrue($constant->isProtected());
 
-        /** Properties */
+        //Properties
         $this->assertCount(2, $classType->getProperties());
 
         $this->assertTrue($classType->getProperties()->has('bar'));
@@ -166,7 +168,7 @@ class NodeVisitorTest extends TestCase
         $this->assertTrue($property->isProtected());
         $this->assertTrue($property->isStatic());
 
-        /** Methods */
+        //Methods
         $this->assertCount(3, $classType->getMethods());
 
         $this->assertTrue($classType->getMethods()->has('getBar'));
@@ -199,7 +201,10 @@ class NodeVisitorTest extends TestCase
 
     public function testInterfaceExpands(): void
     {
-        $typesCollection = $this->parseFile('FooBarInterface.php', $this->getFixturesPath() . 'Foo/FooBarInterface.php');
+        $typesCollection = $this->parseFile(
+            'FooBarInterface.php',
+            $this->getFixturesPath() . 'Foo/FooBarInterface.php'
+        );
 
         $types = $typesCollection->getTypes();
         $this->assertCount(1, $types);

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Metric;
 
@@ -10,7 +12,8 @@ class MetricValue
 
     /**
      * MetricValue constructor.
-     * @param mixed $value
+     *
+     * @param mixed  $value
      * @param string $name
      */
     public function __construct(string $name, $value)

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Model\Classes;
 
@@ -22,22 +24,27 @@ class Property implements PropertyInterface, AccessibleInterface
     /**
      * @var ClassInterface|TraitInterface
      */
-    private  $type;
+    private $type;
 
     private bool $static = false;
 
     /**
      * Property constructor.
+     *
      * @param string $name
      * @param TypeInterface $type
      * @param int $accessType
      * @param bool $static
      * @throws Exception
      */
-    public function __construct(string $name, TypeInterface $type, int $accessType = AccessibleInterface::ACCESS_PUBLIC, bool $static = false)
-    {
+    public function __construct(
+        string $name,
+        TypeInterface $type,
+        int $accessType = AccessibleInterface::ACCESS_PUBLIC,
+        bool $static = false
+    ) {
         $this->name = $name;
-        if (!in_array($accessType, [AccessibleInterface::ACCESS_PUBLIC, AccessibleInterface::ACCESS_PROTECTED, AccessibleInterface::ACCESS_PRIVATE])) {
+        if (!in_array($accessType, AccessibleInterface::ACCESS_LIST)) {
             $accessType = AccessibleInterface::ACCESS_PUBLIC;
         }
 

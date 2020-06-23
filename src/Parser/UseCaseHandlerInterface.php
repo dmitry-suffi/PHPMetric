@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Parser;
 
 use Suffi\PHPMetric\Model\Classes\External\UseCaseInterface;
@@ -13,13 +15,15 @@ interface UseCaseHandlerInterface
 {
     /**
      * Проверка $object на соответствие типа, подходщего для данного использования
-     * @param mixed $object
+     *
+     * @param  mixed $object
      * @return bool
      */
     public function checkType($object): bool;
 
     /**
      * Добавление $object к $currentType
+     *
      * @param TypeInterface $currentType
      * @param TypeInterface $object
      */
@@ -27,16 +31,18 @@ interface UseCaseHandlerInterface
 
     /**
      * Создание типа. Должен соответствовать проверке checkType
-     * @param string $name
-     * @param string $fullName
+     *
+     * @param  string $name
+     * @param  string $fullName
      * @return TypeInterface
      */
     public function createType(string $name, string $fullName): TypeInterface;
 
     /**
      * Создание исользования
-     * @param TypeInterface $currentType
-     * @param TypeInterface $object
+     *
+     * @param  TypeInterface $currentType
+     * @param  TypeInterface $object
      * @return UseCaseInterface
      */
     public function createUseCase(TypeInterface $currentType, TypeInterface $object): UseCaseInterface;

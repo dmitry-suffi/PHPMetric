@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Metric\Classes;
 
 use PHPUnit\Framework\TestCase;

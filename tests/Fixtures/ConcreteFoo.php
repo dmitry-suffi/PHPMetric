@@ -18,7 +18,7 @@ class ConcreteFoo extends Foo
         return 'foo';
     }
 
-    private function _foo()
+    private function pfoo()
     {
         return 'foo';
     }

@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Parser;
-
 
 use Suffi\PHPMetric\Model\Classes\ClassType;
 use Suffi\PHPMetric\Model\Classes\External\ExternalTraitType;
@@ -38,7 +38,7 @@ class TraitUseCaseHandler implements UseCaseHandlerInterface
     }
 
     /**
-     * @param ClassType $currentType
+     * @param ClassType      $currentType
      * @param TraitInterface $object
      */
     public function createUseCase(TypeInterface $currentType, TypeInterface $object): ClassTrait

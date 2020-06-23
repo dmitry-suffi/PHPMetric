@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Metric;
 
 use Suffi\PHPMetric\Model\TypesCollection;

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Model\Classes;
 
@@ -21,7 +23,11 @@ class ConstantTest extends TestCase
 
     public function testProtected(): void
     {
-        $constant = new Constant('test', $this->createMock(ClassInterface::class), AccessibleInterface::ACCESS_PROTECTED);
+        $constant = new Constant(
+            'test',
+            $this->createMock(ClassInterface::class),
+            AccessibleInterface::ACCESS_PROTECTED
+        );
 
         $this->assertTrue($constant->isProtected());
         $this->assertFalse($constant->isPublic());

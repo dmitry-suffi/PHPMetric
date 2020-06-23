@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Suffi\PHPMetric\Parser;
 
@@ -87,9 +89,9 @@ class NodeVisitor extends NodeVisitorAbstract
                     return NodeTraverser::DONT_TRAVERSE_CHILDREN;
                 }
                 $this->currentType = $this->createClass($node);
-            } else if ($node instanceof Node\Stmt\Trait_) {
+            } elseif ($node instanceof Node\Stmt\Trait_) {
                 $this->currentType = $this->createTrait($node);
-            } else if ($node instanceof Node\Stmt\Interface_) {
+            } elseif ($node instanceof Node\Stmt\Interface_) {
                 $this->currentType = $this->createInterface($node);
             }
 
@@ -169,36 +171,59 @@ class NodeVisitor extends NodeVisitorAbstract
     {
         // Уже прочитан
         if ($this->types->has($fullName)) {
-            /** @var TypeInterface $type */
+            /**
+ * @var TypeInterface $type
+*/
             $type = $this->types->get($fullName);
-            /** Проверяем соответствие типов */
+            /**
+ * Проверяем соответствие типов
+*/
             $object->checkType($type);
-            /** Добавляем */
+            /**
+ * Добавляем
+*/
             $object->add($this->currentType, $type);
-        } else if ($this->externalTypes->has($fullName)) {  //Неизвестный, но уже встречался, тянем из externalTypes
-            /** @var HavingUseCasesInterface&TypeInterface $externalType */
+        } elseif ($this->externalTypes->has($fullName)) {  //Неизвестный, но уже встречался, тянем из externalTypes
+            /**
+ * @var HavingUseCasesInterface&TypeInterface $externalType
+*/
             $externalType = $this->externalTypes->get($fullName);
-            /** Проверяем соответствие типов */
+            /**
+ * Проверяем соответствие типов
+*/
             $object->checkType($externalType);
-            /** Добавляем */
+            /**
+ * Добавляем
+*/
             $object->add($this->currentType, $externalType);
-            /** И отмечаем использование */
+            /**
+ * И отмечаем использование
+*/
             $externalType->addUseCase($object->createUseCase($this->currentType, $externalType));
         } else { // Первый раз встречаем, создаем новый externalType
-            /** @var HavingUseCasesInterface&TypeInterface $externalType */
+            /**
+ * @var HavingUseCasesInterface&TypeInterface $externalType
+*/
             $externalType = $object->createType($name, $fullName);
             $this->externalTypes->addType($externalType);
-            /** Добавляем */
+            /**
+ * Добавляем
+*/
             $object->add($this->currentType, $externalType);
-            /** И отмечаем использование */
-            /** @var HavingUseCasesInterface $externalType */
+            /**
+ * И отмечаем использование
+*/
+            /**
+ * @var HavingUseCasesInterface $externalType
+*/
             $externalType->addUseCase($object->createUseCase($this->currentType, $externalType));
         }
     }
 
     /**
      * Создание класса
-     * @param Node\Stmt\Class_ $node
+     *
+     * @param  Node\Stmt\Class_ $node
      * @return ClassType
      */
     public function createClass(Node\Stmt\Class_ $node): ClassType
@@ -214,7 +239,8 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * Создание трейта
-     * @param Node\Stmt\Trait_ $node
+     *
+     * @param  Node\Stmt\Trait_ $node
      * @return TraitType
      */
     public function createTrait(Node\Stmt\Trait_ $node): TraitType
@@ -227,7 +253,8 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * Создание интерфейса
-     * @param Node\Stmt\Interface_ $node
+     *
+     * @param  Node\Stmt\Interface_ $node
      * @return InterfaceType
      */
     public function createInterface(Node\Stmt\Interface_ $node): InterfaceType
@@ -242,7 +269,8 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * Создание константы
-     * @param Node\Stmt\ClassConst $node
+     *
+     * @param  Node\Stmt\ClassConst $node
      * @return Constant
      * @throws \Suffi\PHPMetric\Model\Classes\Exception
      */
@@ -250,7 +278,7 @@ class NodeVisitor extends NodeVisitorAbstract
     {
         if ($node->isPrivate()) {
             $access = AccessibleInterface::ACCESS_PRIVATE;
-        } else if ($node->isProtected()) {
+        } elseif ($node->isProtected()) {
             $access = AccessibleInterface::ACCESS_PROTECTED;
         } else {
             $access = AccessibleInterface::ACCESS_PUBLIC;
@@ -265,7 +293,8 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * Создание метода
-     * @param Node\Stmt\ClassMethod $node
+     *
+     * @param  Node\Stmt\ClassMethod $node
      * @return Method
      * @throws \Suffi\PHPMetric\Model\Classes\Exception
      */
@@ -273,7 +302,7 @@ class NodeVisitor extends NodeVisitorAbstract
     {
         if ($node->isPrivate()) {
             $access = AccessibleInterface::ACCESS_PRIVATE;
-        } else if ($node->isProtected()) {
+        } elseif ($node->isProtected()) {
             $access = AccessibleInterface::ACCESS_PROTECTED;
         } else {
             $access = AccessibleInterface::ACCESS_PUBLIC;
@@ -290,7 +319,8 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * Создание свойства
-     * @param Node\Stmt\Property $node
+     *
+     * @param  Node\Stmt\Property $node
      * @return Property
      * @throws \Suffi\PHPMetric\Model\Classes\Exception
      */
@@ -298,7 +328,7 @@ class NodeVisitor extends NodeVisitorAbstract
     {
         if ($node->isPrivate()) {
             $access = AccessibleInterface::ACCESS_PRIVATE;
-        } else if ($node->isProtected()) {
+        } elseif ($node->isProtected()) {
             $access = AccessibleInterface::ACCESS_PROTECTED;
         } else {
             $access = AccessibleInterface::ACCESS_PUBLIC;
@@ -316,10 +346,14 @@ class NodeVisitor extends NodeVisitorAbstract
     {
         $fullName = $this->currentType->getFullName();
         if ($this->externalTypes->has($fullName)) {
-            /** @var HavingUseCasesInterface $externalType */
+            /**
+ * @var HavingUseCasesInterface $externalType
+*/
             $externalType = $this->externalTypes->get($fullName);
             if ($externalType instanceof HavingUseCasesInterface) {
-                /** @var UseCaseInterface $useCase */
+                /**
+ * @var UseCaseInterface $useCase
+*/
                 foreach ($externalType->getUseCases() as $useCase) {
                     if (!$useCase->isDefined()) {
                         $useCase->define($this->currentType);

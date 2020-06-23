@@ -4,10 +4,10 @@ namespace Tests\Fixtures\Foo;
 
 trait FooTrait
 {
-    protected $t_foo = 't_foo';
+    protected $tFoo = 'tFoo';
 
-    public function t_foo()
+    public function tFoo()
     {
-        return $this->t_foo;
+        return $this->tFoo;
     }
 }

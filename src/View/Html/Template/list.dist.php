@@ -189,37 +189,35 @@
 
             ?>
 
-            <?php foreach ($tree as $dirname => $files): ?>
-                <tr class="table-active tr-dir open" data-dir="<?= $dirname; ?>">
-                    <td colspan="6"><i class="fa fa-folder-open dir-icon"></i> <?= $dirname; ?></td>
+            <?php foreach ($tree as $dirname => $files) : ?>
+                <tr class="table-active tr-dir open" data-dir="<?php echo $dirname; ?>">
+                    <td colspan="6"><i class="fa fa-folder-open dir-icon"></i> <?php echo $dirname; ?></td>
                 </tr>
 
-                <?php foreach ($files as $file): ?>
-                    <?php if (isset($fileMeasureds[$file])): ?>
-
-                        <?php foreach ($fileMeasureds[$file] as $measuredType): ?>
-
-                            <tr class="tr-type" data-dir="<?= $dirname; ?>">
+                <?php foreach ($files as $file) : ?>
+                    <?php if (isset($fileMeasureds[$file])) : ?>
+                        <?php foreach ($fileMeasureds[$file] as $measuredType) : ?>
+                            <tr class="tr-type" data-dir="<?php echo $dirname; ?>">
                                 <td>
-                                    <?php if ($measuredType->getType() instanceof \Suffi\PHPMetric\Model\Classes\Interfaces\InterfaceInterface): ?>
+                                    <?php if ($measuredType->getType() instanceof \Suffi\PHPMetric\Model\Classes\Interfaces\InterfaceInterface) : ?>
                                         <i class="fa fa-info-circle"></i>
                                     <?php endif ?>
-                                    <?php if ($measuredType->getType() instanceof \Suffi\PHPMetric\Model\Classes\Interfaces\TraitInterface): ?>
+                                    <?php if ($measuredType->getType() instanceof \Suffi\PHPMetric\Model\Classes\Interfaces\TraitInterface) : ?>
                                         <i class="fa fa-tumblr-square"></i>
                                     <?php endif ?>
-                                    <?php if ($measuredType->getType() instanceof \Suffi\PHPMetric\Model\Classes\Interfaces\ClassInterface): ?>
+                                    <?php if ($measuredType->getType() instanceof \Suffi\PHPMetric\Model\Classes\Interfaces\ClassInterface) : ?>
                                         <i class="fa fa-copyright"></i>
                                     <?php endif ?>
 
-                                    <?= $measuredType->getType()->getName() ?>
+                                    <?php echo $measuredType->getType()->getName() ?>
                                 </td>
 
-                                <td class="text-center"><?= $measuredType->getValue('ConstantCount') ? $measuredType->getValue('ConstantCount')->getValue() : 0 ?></td>
-                                <td class="text-center"><?= $measuredType->getValue('MethodCount') ? $measuredType->getValue('MethodCount')->getValue() : 0 ?></td>
-                                <td class="text-center"><?= $measuredType->getValue('PropertyCount') ? $measuredType->getValue('PropertyCount')->getValue() : 0 ?></td>
+                                <td class="text-center"><?php echo $measuredType->getValue('ConstantCount') ? $measuredType->getValue('ConstantCount')->getValue() : 0 ?></td>
+                                <td class="text-center"><?php echo $measuredType->getValue('MethodCount') ? $measuredType->getValue('MethodCount')->getValue() : 0 ?></td>
+                                <td class="text-center"><?php echo $measuredType->getValue('PropertyCount') ? $measuredType->getValue('PropertyCount')->getValue() : 0 ?></td>
 
-                                <td class="text-center"><?= $measuredType->getValue('NOC') ? $measuredType->getValue('NOC')->getValue() : 0 ?></td>
-                                <td class="text-center"><?= $measuredType->getValue('ClassDIT') ? $measuredType->getValue('ClassDIT')->getValue() : 0 ?></td>
+                                <td class="text-center"><?php echo $measuredType->getValue('NOC') ? $measuredType->getValue('NOC')->getValue() : 0 ?></td>
+                                <td class="text-center"><?php echo $measuredType->getValue('ClassDIT') ? $measuredType->getValue('ClassDIT')->getValue() : 0 ?></td>
                             </tr>
 
                         <?php endforeach; ?>
@@ -237,7 +235,7 @@
 </div>
 
 <script>
-    var tree = JSON.parse('<?= json_encode($tree) ?>');
+    var tree = JSON.parse('<?php echo json_encode($tree) ?>');
 
     $(document).ready(function () {
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Suffi\PHPMetric\Model\Classes\External\UseCases;
 
 use Suffi\PHPMetric\Model\Classes\External\Exception;
@@ -8,6 +10,7 @@ use Suffi\PHPMetric\Model\Classes\Interfaces\TypeInterface;
 
 /**
  * Class InterfaceExtend
+ *
  * @property InterfaceInterface $type
  */
 class InterfaceExtend extends UseCase
